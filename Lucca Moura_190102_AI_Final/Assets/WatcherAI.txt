@@ -1,0 +1,37 @@
+tree("Root")
+	parallel
+		// as duas arvores de ação acontece ao mesmo tempo
+		repeat mute tree("Seek")
+		repeat mute tree("Dead")
+
+tree("Dead")
+	sequence
+		// se tiver menos que 1 de vida
+		IsHealthLessThan(0.1)
+		// some da cena
+		Explode
+
+tree("Seek")
+	fallback
+		tree("Attack")
+		// se tiver menos que 90 de vida
+		while IsHealthLessThan(90.0)
+			fallback
+				// ativa o ataque
+				tree("Seguir")
+
+tree("Attack")
+	while SeePlayer
+		sequence
+			// alveja o player
+			TargetPlayer
+			// olha para o player
+			LookAtTarget
+			// espera um tempo
+			Wait(0.2)
+			// atira
+			Fire
+
+tree("Seguir")
+	sequence
+		Seeker

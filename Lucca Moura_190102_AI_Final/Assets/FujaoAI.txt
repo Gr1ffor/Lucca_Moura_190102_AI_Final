@@ -1,0 +1,31 @@
+tree("Root")
+	parallel
+		// as duas arvores de ação acontece ao mesmo tempo
+		repeat mute tree("Covarde")
+		repeat mute tree("Dead")
+
+tree("Dead")
+	sequence
+		// se tiver menos que 1 de vida
+		IsHealthLessThan(0.1)
+		// some da cena
+		Explode
+
+tree("Covarde")
+	fallback
+		tree("Run")
+		while IsHealthLessThan(40.0)
+			fallback
+				tree("Wander")
+
+tree("Run")
+	while SeePlayer
+		sequence
+			Covarde
+
+tree("Wander")
+	sequence
+		// escolhe um destino aleatorio
+		PickRandomDestination
+		// se move ate o destino
+		MoveToDestination
