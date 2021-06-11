@@ -11,6 +11,7 @@ tree("Dead")
 		// some da cena
 		Explode
 
+// se ele se afastar de voce ativa o wander
 tree("Covarde")
 	fallback
 		tree("Run")
@@ -19,6 +20,7 @@ tree("Covarde")
 				tree("Wander")
 
 tree("Run")
+	// se ele te ver ele corre
 	while SeePlayer
 		sequence
 			Covarde

@@ -118,7 +118,8 @@ public class Healer : MonoBehaviour
         // task foi concluida
         Task.current.Succeed();
     }
-
+    
+    // se o player ficar na area ele vai ser healado
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Player"))

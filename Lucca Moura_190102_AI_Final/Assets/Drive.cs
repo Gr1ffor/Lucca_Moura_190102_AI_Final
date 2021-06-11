@@ -17,6 +17,7 @@ public class Drive : MonoBehaviour {
 
         void Update()
         {
+            //se move e rotaciona
             float translation = Input.GetAxis("Vertical") * speed;
             float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
             translation *= Time.deltaTime;
@@ -40,6 +41,7 @@ public class Drive : MonoBehaviour {
                 bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward*2000);
             }
 
+            //respawna se morrer
             if (health <= 0)
             {
                 health = 100;
@@ -47,6 +49,7 @@ public class Drive : MonoBehaviour {
             }
         }    
 
+    //toma dano para as balas
     void OnCollisionEnter(Collision col)
         {
             if (col.gameObject.tag == "bullet")
@@ -55,9 +58,14 @@ public class Drive : MonoBehaviour {
             }
         }
 
+    // recupera vida se for healado
     public void Damage(float damage)
     {
-        health += damage;
+        if(health <= 100)
+        {
+            health += damage;
+        }
+        
     }
 
 }

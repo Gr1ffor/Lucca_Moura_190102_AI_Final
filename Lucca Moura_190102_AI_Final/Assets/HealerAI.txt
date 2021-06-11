@@ -19,6 +19,7 @@ tree("Seek")
 				// começa a segui-lo
 				tree("Seguir")
 
+// segue o player
 tree("Seguir")
 	sequence
 		Seeker

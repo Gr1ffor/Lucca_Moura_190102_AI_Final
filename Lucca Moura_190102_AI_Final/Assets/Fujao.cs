@@ -163,6 +163,7 @@ public class Fujao : MonoBehaviour
         return true;
     }
 
+    // foge de voce se ele te ver
     [Task]
     public void Covarde()
     {
